@@ -1,0 +1,16 @@
+#Declare Variables
+$SearchDirectory = "C:\Users\dtmacroh\Dropbox\IFTTT"
+$SleepTime = 5
+
+#Sleep for 1 min before being active
+Start-Sleep -Seconds 60
+
+Do {
+Start-Sleep -Seconds $SleepTime
+$FileCheck - Test-Path -Path "$SearchDirectory\runRobot.txt"
+}
+Until ($FileCheck -eq $True)
+
+Remove-Item -Path "$SearchDirectory\runRobot.txt"
+
+Invoke-Item “C:\Program Files\MobileRobots\bettybot.exe”
